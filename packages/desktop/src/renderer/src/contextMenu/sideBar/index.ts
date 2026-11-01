@@ -13,9 +13,15 @@ import {
 import { t } from '../../i18n'
 import { popupContextMenu, type ContextMenuItem } from '../popupMenu'
 
+export interface PinMenuOption {
+  pinned: boolean
+  toggle: () => void
+}
+
 export const showContextMenu = (
   event: { clientX: number; clientY: number },
-  hasPathCache: boolean
+  hasPathCache: boolean,
+  pin?: PinMenuOption
 ): void => {
   const contextItems: ContextMenuItem[] = [
     getNewFile(),
@@ -33,6 +39,13 @@ export const showContextMenu = (
   ]
 
   contextItems[5].enabled = hasPathCache
+
+  if (pin) {
+    contextItems.push(SEPARATOR, {
+      label: t(pin.pinned ? 'contextMenu.sideBar.unpinFromSidebar' : 'contextMenu.sideBar.pinToSidebar'),
+      click: pin.toggle
+    })
+  }
 
   const items: ContextMenuItem[] = contextItems.map((item) => {
     if (!item || item.type === 'separator') return item

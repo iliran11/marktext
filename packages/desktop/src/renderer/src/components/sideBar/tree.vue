@@ -3,6 +3,7 @@
     ref="treeView"
     class="tree-view"
   >
+    <pinned-files />
     <div
       v-if="openedFilesInSidebar"
       class="opened-files"
@@ -218,6 +219,7 @@ import { usePreferencesStore } from '@/store/preferences'
 import Folder from './treeFolder.vue'
 import File from './treeFile.vue'
 import OpenedFile from './treeOpenedTab.vue'
+import PinnedFiles from './pinnedFiles.vue'
 import { MIN_VISIBLE_ROWS, useOpenedFilesResize } from './useOpenedFilesResize'
 import { useTabReorder } from '../useTabReorder'
 import { useTreeDragDrop } from './useTreeDragDrop'

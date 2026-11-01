@@ -109,7 +109,18 @@ onMounted(() => {
     fileEl.value.addEventListener('contextmenu', (event) => {
       event.preventDefault()
       projectStore.CHANGE_ACTIVE_ITEM(props.file)
-      showContextMenu(event, !!clipboard.value)
+      const { isMarkdown, pathname } = props.file
+      const pinned = preferencesStore.pinnedFiles.some((p) =>
+        window.fileUtils.isSamePathSync(p, pathname)
+      )
+      const pin = isMarkdown
+        ? {
+            pinned,
+            toggle: () =>
+              pinned ? preferencesStore.UNPIN_FILE(pathname) : preferencesStore.PIN_FILE(pathname)
+          }
+        : undefined
+      showContextMenu(event, !!clipboard.value, pin)
     })
   }
 

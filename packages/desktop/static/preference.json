@@ -81,6 +81,7 @@
   "autoRevealInSidebar": true,
   "openFilesInPreviewMode": true,
   "showPandocConvert": false,
+  "pinnedFiles": [],
   "searchExclusions": [],
   "searchMaxFileSize": "",
   "searchIncludeHidden": false,

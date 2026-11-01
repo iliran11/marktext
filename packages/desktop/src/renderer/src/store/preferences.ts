@@ -105,6 +105,7 @@ export interface PreferencesState {
   openedFilesInSidebar: boolean
   autoRevealInSidebar: boolean
   openFilesInPreviewMode: boolean
+  pinnedFiles: string[]
 
   searchExclusions: string[]
   searchMaxFileSize: string
@@ -229,6 +230,7 @@ export const usePreferencesStore = defineStore('preferences', {
     openedFilesInSidebar: true,
     autoRevealInSidebar: true,
     openFilesInPreviewMode: true,
+    pinnedFiles: [],
 
     searchExclusions: [],
     searchMaxFileSize: '',
@@ -305,6 +307,16 @@ export const usePreferencesStore = defineStore('preferences', {
       }
 
       window.electron.ipcRenderer.send('mt::set-user-preference', { [type as string]: value })
+    },
+
+    PIN_FILE(pathname: string): void {
+      if (this.pinnedFiles.some((p) => window.fileUtils.isSamePathSync(p, pathname))) return
+      this.SET_SINGLE_PREFERENCE({ type: 'pinnedFiles', value: [...this.pinnedFiles, pathname] })
+    },
+
+    UNPIN_FILE(pathname: string): void {
+      const value = this.pinnedFiles.filter((p) => !window.fileUtils.isSamePathSync(p, pathname))
+      this.SET_SINGLE_PREFERENCE({ type: 'pinnedFiles', value })
     },
 
     SET_USER_DATA({ type, value }: SetUserDataPayload): void {

@@ -210,7 +210,9 @@
       "rename": "Rename",
       "moveToTrash": "Move To Trash",
       "copyPath": "Copy Path",
-      "showInFolder": "Show In Folder"
+      "showInFolder": "Show In Folder",
+      "pinToSidebar": "Pin to Sidebar",
+      "unpinFromSidebar": "Unpin from Sidebar"
     },
     "tabs": {
       "close": "Close",
@@ -250,6 +252,10 @@
       "noSearchableFolders": "No available folders to search."
     },
     "tree": {
+      "pinnedFiles": "Pinned",
+      "pinCurrentFile": "Pin current file",
+      "unpinFile": "Unpin",
+      "noPinnedFiles": "Right-click a file to pin it",
       "openedFiles": "Opened files",
       "resizeOpenedFiles": "Resize opened files list",
       "saveAll": "Save All",

@@ -162,6 +162,7 @@ export interface UserPreferences extends RecoveryPreferences {
   autoRevealInSidebar: boolean
   openFilesInPreviewMode: boolean
   showPandocConvert: boolean
+  pinnedFiles: string[]
   searchExclusions: string[]
   searchMaxFileSize: string
   searchIncludeHidden: boolean

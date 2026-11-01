@@ -493,6 +493,14 @@
     "type": "boolean",
     "default": false
   },
+  "pinnedFiles": {
+    "description": "Sidebar--Absolute paths of markdown files pinned to the sidebar.--internal",
+    "type": "array",
+    "items": {
+      "type": "string"
+    },
+    "default": []
+  },
   "searchExclusions": {
     "description": "Searcher--List of glob patterns to exclude from search.--internal",
     "type": "array",
