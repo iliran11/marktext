@@ -47,8 +47,8 @@
         :title="row.pathname"
         @click="openPinned(row.pathname)"
       >
-        <span class="location">{{ row.location }}</span>
         <span class="name">{{ row.filename }}</span>
+        <span class="location">{{ row.location }}</span>
         <button
           type="button"
           class="plain-button unpin-icon"
@@ -160,7 +160,7 @@ const openPinned = (pathname: string): void => {
 }
 
 .pinned-files-list {
-  max-height: 240px;
+  max-height: 320px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -172,12 +172,12 @@ const openPinned = (pathname: string): void => {
 }
 
 .pinned-file {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: 8px;
-  align-items: center;
-  height: 28px;
-  line-height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  height: 40px;
+  line-height: 18px;
   padding: 0 28px 0 35px;
   position: relative;
   cursor: default;
@@ -188,12 +188,13 @@ const openPinned = (pathname: string): void => {
     white-space: nowrap;
   }
   & > .location {
-    font-size: 12px;
+    font-size: 11px;
+    line-height: 15px;
     color: var(--sideBarTextColor);
   }
   & > .unpin-icon {
     position: absolute;
-    top: 4px;
+    top: 10px;
     right: 6px;
     width: 20px;
     height: 20px;
